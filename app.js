@@ -12,12 +12,18 @@ client.on("message", message =>
     const command = args.shift().toLowerCase();
     const fs = require("fs");
 
-    try {
-        let commandFile = require(`./commands/${command}.js`);
-        commandFile.run(client, message, args, fs, config);
-    } catch (err) {
-        console.error(err);
-    }
+    fs.readdir("./commands", function(err, items) {
+        if (items.includes(command + '.js'))
+        {
+            let commandFile = require(`./commands/${command}.js`);
+            commandFile.run(client, message, args, fs, config);
+        }
+        else
+        {
+            message.channel.send("Commande inconnue, essayez `" + config.prefix + "help`");
+            message.delete(60000);
+        }
+    });
 });
 
 client.login(auth.token);
