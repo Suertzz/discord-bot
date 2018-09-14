@@ -8,18 +8,33 @@ exports.run = (client, message, args, fs, config) =>
         message.delete(60000);
         return;
     }
-    async function purge()
+    if (args[0] === "messages")
     {
-        if (isNaN(args[0])) {
-            message.channel.send("Veuillez utiliser un nombre comme argument. Utilisation : `" + config.prefix + "cleanup <amount>`");
-            return;
+        async function m_purge()
+        {
+            if (isNaN(args[1])) {
+                message.channel.send("Veuillez utiliser un nombre comme argument. Utilisation : `" + config.prefix + "cleanup messages <amount>`");
+                return;
+            }
+            const fetched = await message.channel.fetchMessages({limit: args[1]});
+            console.log(fetched.size + " messages found, deleting...");
+            message.channel.bulkDelete(fetched)
+                .catch(error => message.channel.send("Erreur : `" + error + '`'));
         }
-        const fetched = await message.channel.fetchMessages({limit: args[0]});
-        console.log(fetched.size + " messages found, deleting...");
-
-        message.channel.bulkDelete(fetched)
-            .catch(error => message.channel.send("Erreur : ${error}"));
+        m_purge();
     }
-
-    purge();
+    else if (args[0] === "after")
+    {
+        async function a_purge()
+        {
+            if (isNaN(args[1])) {
+                message.channel.send("Veuillez utiliser un ID comme argument. Utilisation : `" + config.prefix + "cleanup after <ID>`");
+                return;
+            }
+            const fetched = await message.channel.fetchMessages({after: args[1], limit:99});
+            console.log(fetched.size + " messages found, deleting...");
+            message.channel.bulkDelete(fetched).catch(console.error);
+        }
+        a_purge();
+    }
 }
