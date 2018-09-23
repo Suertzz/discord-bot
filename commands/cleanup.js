@@ -33,7 +33,7 @@ exports.run = (client, message, args, fs, config) =>
             }
             const fetched = await message.channel.fetchMessages({after: args[1], limit:99});
             console.log(fetched.size + " messages found, deleting...");
-            message.channel.bulkDelete(fetched).catch(console.error);
+            message.channel.bulkDelete(fetched).catch(console.log);
         }
         a_purge();
     }

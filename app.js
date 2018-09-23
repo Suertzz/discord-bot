@@ -9,7 +9,7 @@ fs.readdir("./events/", (err, files) => {
     files.forEach(file => {
         let eventFunction = require(`./events/${file}`);
         let eventName = file.split(".")[0];
-        client.on(eventName, (...args) => eventFunction.run(client, ...args));
+        client.on(eventName, (...args) => eventFunction.run(client, fs, config, ...args));
     });
 });
 
@@ -32,10 +32,6 @@ client.on("message", message =>
             message.delete(60000);
         }
     });
-});
-
-client.on('ready', () => {
-    client.user.setActivity(config.prefix + "help");
 });
 
 client.login(auth.token);
