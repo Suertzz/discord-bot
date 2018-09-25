@@ -1,6 +1,6 @@
 exports.run = (client, message, args, fs, config) =>
 {
-    if (message.member.roles.some(r=>["Administrateur", "Modérateur"].includes(r.name)))
+    if (message.member.roles.some(r=>["Administrateur", "Modérateur", "Support"].includes(r.name)))
         message.delete();
     else
     {
@@ -39,7 +39,7 @@ exports.run = (client, message, args, fs, config) =>
     }
     else
     {
-        message.channel.send("Argument manquant. " + "Utilisation : `" + config.prefix + "` <messages/after>");
+        message.channel.send("Argument manquant. " + "Utilisation : `" + config.prefix + "cleanup <messages / after>`");
         return;
     }
 }
