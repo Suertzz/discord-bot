@@ -37,4 +37,9 @@ exports.run = (client, message, args, fs, config) =>
         }
         a_purge();
     }
+    else
+    {
+        message.channel.send("Argument manquant. " + "Utilisation : `" + config.prefix + "` <messages/after>");
+        return;
+    }
 }
