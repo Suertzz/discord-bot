@@ -1,6 +1,6 @@
 exports.run = (client, message, args, fs, config) =>
 {
-    if (message.member.roles.some(r=>["Administrateur", "Modérateur", "Support"].includes(r.name)))
+    if (message.member.roles.some(r=>["Leader", "Administrateur", "Modérateur", "Support"].includes(r.name)))
         message.delete();
     else
     {

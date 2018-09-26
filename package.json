@@ -2,6 +2,7 @@
   "name": "nodebot",
   "version": "1.0.0",
   "dependencies": {
-    "discord.js": "latest"
+    "discord.js": "latest",
+    "semver": "^5.5.1"
   }
 }

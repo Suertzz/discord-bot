@@ -5,7 +5,7 @@ exports.run = (client, message, args, fs, config) =>
         message.channel.send("Le prefix des commandes est '`" + config.prefix + "`'");
         return;
     }
-    else if (message.member.roles.some(r=>["Administrateur", "Modérateur", "Support"].includes(r.name)))
+    else if (message.member.roles.some(r=>["Leader", "Administrateur"].includes(r.name)))
     {
         const emoji = client.emojis.find(x => x.name === "prof");
         message.react(emoji);
