@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 exports.run = (client, fs, config, omsg, nmsg) => {
     const log = client.channels.get("461275693808877568");
-    if (nmsg.author.bot || nmsg.content.indexOf(config.prefix) !== 0)
+    if (nmsg.author.bot || !(nmsg.content.indexOf(config.prefix) !== 0))
         return;
     const embed = new discord.RichEmbed()
         .setAuthor("Message édité", client.user.avatarURL)
