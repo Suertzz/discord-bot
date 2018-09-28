@@ -9,6 +9,7 @@ exports.run = (client, message, args, fs, config) =>
     {
         const emoji = client.emojis.find(x => x.name === "prof");
         message.react(emoji);
+        message.delete(60000);
     }
     else
     {
