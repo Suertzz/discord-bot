@@ -1,58 +1,52 @@
 const discord = require('discord.js');
-exports.run = (client, message, args, fs, config) =>
-{
-    const emoji = client.emojis.find(x => x.name === "prof");
+const commands = [
+    {
+        command: 'help',
+        desc: 'Afficher ce même message'
+    },
+    {
+        command: 'version',
+        desc: 'Affiche la version du bot'
+    },
+    {
+        command: 'prefix',
+        desc: 'Redéfinir un nouveau préfix',
+        roles: ['Leader', 'Administrateur']
+    },
+    {
+        command: 'cleanup',
+        desc: 'Nettoyage des messages',
+        roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
+    },
+    {
+        command: 'mute',
+        desc: 'Rendre muet une personne',
+        roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
+    },
+    {
+        command: 'unmute',
+        desc: 'Rendre la parole à une personne',
+        roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
+    }
+]
+
+exports.run = (client, message, args, fs, config) => {
+    const emoji = client.emojis.find(x => x.name === 'prof');
     message.react(emoji);
     message.delete(60000);
 
-    if (message.member.roles.some(r=>["Leader", "Administrateur"].includes(r.name)))
-    {
-        const embed = new discord.RichEmbed()
-            .setAuthor("Récapitulatif des commandes disponible :", client.user.avatarURL)
-            .setFooter("© Suertzz | Mineweb.org")
-            .setColor(3426654)
-            .addField("`" + config.prefix + "help`", "Afficher ce même message")
-            .addField("`" + config.prefix + "version`", "Affiche la version du bot")
-            .addField("`" + config.prefix + "prefix`", "Redéfinir un nouveau préfix")
-            .addField("`" + config.prefix + "cleanup`", "Nettoyage des messages")
-            .addField("`" + config.prefix + "mute`", "Rendre muet une personne")
-            .addField("`" + config.prefix + "unmute`", "Rendre la parole à une personne");
-        message.channel.send({embed});
-    }
-    else if (message.member.roles.some(r=>["Modérateur"].includes(r.name)))
-    {
-        const embed = new discord.RichEmbed()
-            .setAuthor("Récapitulatif des commandes disponible :", client.user.avatarURL)
-            .setFooter("© Suertzz | Mineweb.org")
-            .setColor(3426654)
-            .addField("`" + config.prefix + "help`", "Afficher ce même message")
-            .addField("`" + config.prefix + "version`", "Affiche la version du bot")
-            .addField("`" + config.prefix + "cleanup`", "Nettoyage des messages")
-            .addField("`" + config.prefix + "mute`", "Rendre muet une personne")
-            .addField("`" + config.prefix + "unmute`", "Rendre la parole à une personne");
-        message.channel.send({embed});
-    }
-    else if (message.member.roles.some(r=>["Support"].includes(r.name)))
-    {
-        const embed = new discord.RichEmbed()
-            .setAuthor("Récapitulatif des commandes disponible :", client.user.avatarURL)
-            .setFooter("© Suertzz | Mineweb.org")
-            .setColor(3426654)
-            .addField("`" + config.prefix + "help`", "Afficher ce même message")
-            .addField("`" + config.prefix + "version`", "Affiche la version du bot")
-            .addField("`" + config.prefix + "cleanup`", "Nettoyage des messages")
-            .addField("`" + config.prefix + "mute`", "Rendre muet une personne")
-            .addField("`" + config.prefix + "unmute`", "Rendre la parole à une personne");
-        message.channel.send({embed});
-    }
-    else
-    {
-        const embed = new discord.RichEmbed()
-            .setAuthor("Récapitulatif des commandes disponible :", client.user.avatarURL)
-            .setFooter("© Suertzz | Mineweb.org")
-            .setColor(3426654)
-            .addField("`" + config.prefix + "help`", "Afficher ce même message")
-            .addField("`" + config.prefix + "version`", "Affiche la version du bot");
-        message.channel.send({embed});
-    }
-};
+    const fields = commands.filter((command) => {
+        if (command.roles === undefined) return true; // available for all users
+        return message.member.roles.some(role => command.roles.includes(role.name))
+    })
+
+    const embed = new discord.RichEmbed()
+        .setAuthor('Récapitulatif des commandes disponible :', client.user.avatarURL)
+        .setFooter('© Suertzz | Mineweb.org')
+        .setColor(3426654);
+    fields.forEach((field) => {
+        embed.addField('`' + config.prefix + field.command + '`', field.desc)
+    });
+
+    return message.channel.send({embed})
+}
