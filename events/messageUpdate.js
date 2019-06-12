@@ -3,6 +3,8 @@ exports.run = (client, fs, config, omsg, nmsg) => {
     const log = client.channels.get("461275693808877568");
     if (nmsg.author.bot || !(nmsg.content.indexOf(config.prefix) !== 0) || nmsg.content === omsg.content)
         return;
+    if (omsg.content.length > 1023 || nmsg.content.length > 1023)
+        return;
     const embed = new discord.RichEmbed()
         .setAuthor("Message édité", client.user.avatarURL)
         .setColor(3066993)
