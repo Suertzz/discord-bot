@@ -1,5 +1,6 @@
 exports.run = (client, message, args, fs, config) =>
 {
+    if (message.channel.type === "dm") return;
     if (message.member.roles.some(r=>["Leader", "Administrateur", "Modérateur", "Support"].includes(r.name)))
         message.delete();
     else

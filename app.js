@@ -1,8 +1,21 @@
 const discord = require('discord.js');
 const config = require("./config.json");
-const auth = require("./auth.json");
 const fs = require("fs");
+const mongoose = require('mongoose');
 const client = new discord.Client();
+
+
+async function init_db() {
+    console.log('Initializing the database..');
+    const db = await mongoose.connect('mongodb://localhost/lisa', { useNewUrlParser: true });
+    const { userSchema } = require(`./src/db_schema`);
+    db.model('User', userSchema);
+    global.mongodb = db;
+    global.db = global.mongodb.models;
+    global.cache = [];
+}
+
+init_db().catch(e => console.log(e));
 
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
@@ -34,4 +47,4 @@ client.on("message", message =>
     });
 });
 
-client.login(auth.token);
+client.login(process.env.BOT_SECRET);

@@ -1,5 +1,6 @@
 const discord = require('discord.js');
 exports.run = (client, message, args, fs, config) => {
+    if (message.channel.type === "dm") return;
     if (message.member.roles.some(r=>["Leader", "Administrateur", "Modérateur", "Support"].includes(r.name)))
     {
         const emoji = client.emojis.find(x => x.name === "prof");

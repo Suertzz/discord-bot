@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "discord.js": "latest",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.15",
     "node-docker-api": "^1.1.22",
     "semver": "^5.5.1"
   }

@@ -9,6 +9,10 @@ const commands = [
         desc: 'Affiche la version du bot'
     },
     {
+        command: 'profil',
+        desc: 'Affiche votre profil'
+    },
+    {
         command: 'prefix',
         desc: 'Redéfinir un nouveau préfix',
         roles: ['Leader', 'Administrateur']
@@ -31,6 +35,7 @@ const commands = [
 ]
 
 exports.run = (client, message, args, fs, config) => {
+    if (message.channel.type === "dm") return;
     const emoji = client.emojis.find(x => x.name === 'prof');
     message.react(emoji);
     message.delete(60000);
