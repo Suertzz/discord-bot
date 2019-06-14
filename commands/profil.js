@@ -1,7 +1,6 @@
 const discord = require('discord.js');
 exports.run = async (client, message, args, fs, config) =>
 {
-    if (message.channel.type === "dm") return;
     // db check if user exist
     let user = await global.db.User.findOne({id: message.author.id}).exec();
     if (!user) {

@@ -1,6 +1,5 @@
 exports.run = (client, message, args, fs, config) =>
 {
-    if (message.channel.type === "dm") return;
     if (!args[0])
     {
         message.channel.send("Le prefix des commandes est '`" + config.prefix + "`'");

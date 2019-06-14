@@ -31,6 +31,11 @@ const commands = [
         command: 'unmute',
         desc: 'Rendre la parole à une personne',
         roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
+    },
+    {
+        command: 'say',
+        desc: 'Envoie un message au nom du bot',
+        roles: ['Leader', 'Administrateur']
     }
 ]
 

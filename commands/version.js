@@ -2,7 +2,6 @@ const discord = require('discord.js');
 const info = require ('./../package.json');
 exports.run = (client, message, args, fs, config) =>
 {
-    if (message.channel.type === "dm") return;
     const emoji = client.emojis.find(x => x.name === "prof");
     message.react(emoji);
     message.delete(60000);
