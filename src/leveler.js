@@ -8,12 +8,14 @@ module.exports = async (client, fs, config, message) => {
     if (!user) {
         user = new global.db.User();
         user.id = message.author.id;
+        user.username = message.author.username;
         await user.save();
     }
     const index = global.cache.findIndex(i => i.id === message.author.id);
     const user_cache = global.cache.filter(item => item.id === message.author.id);
     if (user_cache.length === 0) {
         global.cache.push({id: message.author.id, date: Date.now()});
+        user.username = message.author.username;
         user.xp = user.xp + xp;
         await user.save();
     } else {
@@ -21,6 +23,7 @@ module.exports = async (client, fs, config, message) => {
         if (date.add(10, 'seconds') < moment()) {
             global.cache = global.cache.filter(item => item.id !== message.author.id);
             global.cache.push({id: message.author.id, date: Date.now()});
+            user.username = message.author.username;
             user.xp = user.xp + xp;
             await user.save();
         }

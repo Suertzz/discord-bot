@@ -9,8 +9,12 @@ const commands = [
         desc: 'Affiche la version du bot'
     },
     {
-        command: 'profil',
+        command: 'profile',
         desc: 'Affiche votre profil'
+    },
+    {
+        command: 'leaderboard',
+        desc: 'Affiche le classement par niveau'
     },
     {
         command: 'prefix',
