@@ -25,6 +25,6 @@ exports.run = async (client, message, args, fs, config) =>
         .setColor(3447003)
         .setThumbnail(message.author.avatarURL)
         .addField("Niveau", user.level)
-        .addField("XP", user.xp + " / " + Math.round(n_xp));
+        .addField("XP",  Math.round(user.xp) + " / " + Math.round(n_xp));
     message.channel.send({embed});
 };
