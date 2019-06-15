@@ -3,7 +3,6 @@ exports.run = async (client, message, args, fs, config) =>
 {
     const emoji = client.emojis.find(x => x.name === "prof");
     message.react(emoji);
-    message.delete(60000);
 
     let users = await global.db.User.find().sort([['level', -1]]);
     const embed = new discord.RichEmbed()

@@ -4,7 +4,6 @@ exports.run = (client, message, args, fs, config) =>
 {
     const emoji = client.emojis.find(x => x.name === "prof");
     message.react(emoji);
-    message.delete(60000);
     const embed = new discord.RichEmbed()
         .setAuthor("Informations :", client.user.avatarURL)
         .setFooter("© Suertzz | Mineweb.org")

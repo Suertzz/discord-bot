@@ -47,7 +47,6 @@ exports.run = (client, message, args, fs, config) => {
     if (message.channel.type === "dm") return;
     const emoji = client.emojis.find(x => x.name === 'prof');
     message.react(emoji);
-    message.delete(60000);
 
     const fields = commands.filter((command) => {
         if (command.roles === undefined) return true; // available for all users

@@ -18,7 +18,6 @@ exports.run = async (client, message, args, fs, config) =>
     // process comamand
     const emoji = client.emojis.find(x => x.name === "prof");
     message.react(emoji);
-    message.delete(60000);
     const embed = new discord.RichEmbed()
         .setAuthor("Profil de " + message.author.username)
         .setFooter("© Suertzz | Mineweb.org")

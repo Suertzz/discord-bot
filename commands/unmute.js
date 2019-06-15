@@ -4,7 +4,6 @@ exports.run = (client, message, args, fs, config) => {
     {
         const emoji = client.emojis.find(x => x.name === "prof");
         message.react(emoji);
-        message.delete(60000);
         let unmute = message.guild.member(message.mentions.users.first());
         if (!unmute)
             message.channel.send("Argument manquant ou incorrect. Utilisation :`" + config.prefix + "unmute <@username>`");
