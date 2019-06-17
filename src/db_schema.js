@@ -5,13 +5,18 @@ const userSchema = mongoose.Schema({
     username: String,
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 1 },
-    last_message: Date,
+    messages: { type: Number, default: 1 },
     created: {
         type: Date,
         default: Date.now
     }
 });
 
+const configSchema = mongoose.Schema({
+    prefix: { type: String, default: "&" },
+});
+
 module.exports = {
     userSchema,
+    configSchema,
 };

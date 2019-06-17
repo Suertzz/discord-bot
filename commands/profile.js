@@ -3,6 +3,7 @@ exports.run = async (client, message, args, fs, config) =>
 {
     // db check if user exist
     let user = await global.db.User.findOne({id: message.author.id}).exec();
+    let users = await global.db.User.find().sort([['level', -1]]);
     if (!user) {
         user = new global.db.User();
         user.id = message.author.id;
@@ -23,7 +24,9 @@ exports.run = async (client, message, args, fs, config) =>
         .setFooter("© Suertzz | Mineweb.org")
         .setColor(3447003)
         .setThumbnail(message.author.avatarURL)
+        .addField("XP",  Math.round(user.xp) + " / " + Math.round(n_xp))
         .addField("Niveau", user.level)
-        .addField("XP",  Math.round(user.xp) + " / " + Math.round(n_xp));
+        .addField("Classement", users.findIndex(i => i.id === message.author.id) + 1)
+        .addField("Nombre de messages", user.messages);
     message.channel.send({embed});
 };
