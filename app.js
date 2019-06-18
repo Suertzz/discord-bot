@@ -14,7 +14,6 @@ async function init_db() {
     global.db = global.mongodb.models;
     global.cache = [];
     global.config = await global.db.Config.findOne();
-    console.log(global.config);
     if (!global.config) {
         global.config = new global.db.Config();
         await global.config.save();

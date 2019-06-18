@@ -20,6 +20,7 @@ module.exports = async (client, fs, config, message) => {
         global.cache.push({id: message.author.id, date: Date.now()});
         user.username = message.author.username;
         user.xp = user.xp + xp;
+        user.cookie += 0.25
     } else {
         const date = moment(global.cache[index].date);
         if (date.add(10, 'seconds') < moment()) {
@@ -27,6 +28,7 @@ module.exports = async (client, fs, config, message) => {
             global.cache.push({id: message.author.id, date: Date.now()});
             user.username = message.author.username;
             user.xp = user.xp + xp;
+            user.cookie += 0.25;
         }
     }
 

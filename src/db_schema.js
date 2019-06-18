@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 1 },
     messages: { type: Number, default: 1 },
+    cookie: { type: Number, default: 0 },
     created: {
         type: Date,
         default: Date.now

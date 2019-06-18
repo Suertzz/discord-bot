@@ -24,9 +24,10 @@ exports.run = async (client, message, args, fs, config) =>
         .setFooter("© Suertzz | Mineweb.org")
         .setColor(3447003)
         .setThumbnail(message.author.avatarURL)
-        .addField("XP",  Math.round(user.xp) + " / " + Math.round(n_xp))
-        .addField("Niveau", user.level)
-        .addField("Classement", users.findIndex(i => i.id === message.author.id) + 1)
-        .addField("Nombre de messages", user.messages);
+        .addField("Niveau", user.level, true)
+        .addField("XP",  Math.round(user.xp) + " / " + Math.round(n_xp), true)
+        .addField("Classement", users.findIndex(i => i.id === message.author.id) + 1, true)
+        .addField("Nombre de messages", user.messages, true)
+        .addField("Solde", Math.floor(user.cookie) + " :cookie:", true);
     message.channel.send({embed});
 };
