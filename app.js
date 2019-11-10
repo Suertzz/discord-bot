@@ -2,6 +2,7 @@ const discord = require('discord.js');
 const fs = require("fs");
 const mongoose = require('mongoose');
 const client = new discord.Client();
+const moment = require('moment');
 
 
 async function init_db() {
@@ -52,9 +53,9 @@ async function bot() {
             }
         });
     });
-
     client.login(process.env.BOT_SECRET);
 }
+
 
 async function startup() {
     try {

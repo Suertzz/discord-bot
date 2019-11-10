@@ -2,6 +2,8 @@
   "name": "nodebot",
   "version": "1.0.0",
   "dependencies": {
+    "cron": "^1.7.2",
+    "crontab": "^1.2.0",
     "discord.js": "latest",
     "moment": "^2.24.0",
     "mongoose": "^5.5.15",

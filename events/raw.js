@@ -48,6 +48,7 @@ exports.run = (client, fs, config, event) => {
         }
     }
     function defRole(role) {
+        console.log(event.d.guild_id);
         const myGuilds = client.guilds.get(event.d.guild_id);
         myGuilds.fetchMember(event.d.user_id).then(member => member.addRole(myGuilds.roles.get(role))).catch(console.error);
     }

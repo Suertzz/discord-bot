@@ -10,6 +10,14 @@ const userSchema = mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
+    },
+    jail: {
+        state: false,
+        permanent: false,
+        date: {
+            type: Date,
+            default: null
+        }
     }
 });
 

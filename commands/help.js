@@ -27,8 +27,8 @@ const commands = [
         roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
     },
     {
-        command: 'mute',
-        desc: 'Rendre muet une personne',
+        command: 'jail',
+        desc: 'Mettre en prison une personne',
         roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
     },
     {
