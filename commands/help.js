@@ -32,14 +32,24 @@ const commands = [
         roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
     },
     {
-        command: 'unmute',
-        desc: 'Rendre la parole à une personne',
+        command: 'unjail',
+        desc: 'Faire sortir une personne de prison',
         roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
     },
     {
         command: 'say',
         desc: 'Envoie un message au nom du bot',
         roles: ['Leader', 'Administrateur']
+    },
+    {
+        command: 'antipub',
+        desc: 'Mettre le rôle Anti-Pub à une personne',
+        roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
+    },
+    {
+        command: 'allowpub',
+        desc: 'Enlever le rôle Anti-Pub d\'une personne',
+        roles: ['Support', 'Modérateur', 'Leader', 'Administrateur']
     }
 ]
 

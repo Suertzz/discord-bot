@@ -18,6 +18,14 @@ const userSchema = mongoose.Schema({
             type: Date,
             default: null
         }
+    },
+    antipub: {
+        state: false,
+        permanent: false,
+        date: {
+            type: Date,
+            default: null
+        }
     }
 });
 

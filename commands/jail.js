@@ -41,7 +41,7 @@ exports.run =  async (client, message, args, fs, config) => {
                 if (args[2])
                     reason = args.slice(2).join(" ");
                 else
-                    reason = "Aucune raison spécifié";
+                    reason = "Aucune raison spécifiée";
                 const embed = new discord.RichEmbed()
                     .setAuthor("Sanction :", client.user.avatarURL)
                     .setColor(10038562)

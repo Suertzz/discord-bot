@@ -32,7 +32,7 @@ exports.run = async (client, message, args, fs, config) => {
                 message.channel.send(target_user + "  est libre.");
                 const log = client.channels.get("461275693808877568");
                 const embed = new discord.RichEmbed()
-                    .setAuthor("Sanction annulé :", client.user.avatarURL)
+                    .setAuthor("Sanction annulée :", client.user.avatarURL)
                     .setColor(10038562)
                     .setThumbnail("https://pics.suertzz.fr/kissclipart-prisoner-png-clipart-prison-computer-icons-ea6936fe487680b1.png")
                     .setTimestamp()
